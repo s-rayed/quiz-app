@@ -1,7 +1,13 @@
-React Quiz App -
+# React Quiz App -
 
-npm install
+```
 
-run webpack-dev-server
+> npm install
+
+> webpack-dev-server
+
+```
+
+
 
 visit http://localhost:8080/app
