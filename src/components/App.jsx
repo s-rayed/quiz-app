@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import QuestionList from './quiz/QuestionList.jsx';
 import Scorebox from './quiz/ScoreBox.jsx';
+import Results from './quiz/Results.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -10,79 +11,79 @@ class App extends Component {
       questions: [
         {
           id: 1,
-          text: 'What is your name?',
+          text: 'ReactJS is an MVC based framework?',
           choices: [
             {
               id: 'a',
-              text: 'Michael'
+              text: 'True'
             },
             {
               id: 'b',
-              text: 'Brad'
+              text: 'False'
             },
             {
               id: 'c',
-              text: 'Steven'
+              text: 'WTF IS MVC?'
             }
           ],
           correct: 'b'
         },
         {
           id: 2,
-          text: 'What is your mothers name?',
+          text: 'Which of the following concepts is/are key to ReactJS?',
           choices: [
             {
               id: 'a',
-              text: 'Sara'
+              text: 'Component-oriented design'
             },
             {
               id: 'b',
-              text: 'Sue'
+              text: 'Event delegation model'
             },
             {
               id: 'c',
-              text: 'Donna'
+              text: 'Both of the above'
             }
           ],
           correct: 'c'
         },
         {
           id: 3,
-          text: 'What is your fathers name?',
+          text: 'Which of the following needs to be updated to achieve dynamic UI updates?',
           choices: [
             {
               id: 'a',
-              text: 'Bob'
+              text: 'Props'
             },
             {
               id: 'b',
-              text: 'Harry'
+              text: 'State'
             },
             {
               id: 'c',
-              text: 'Wayne'
+              text: 'The entire DOM fool'
             }
           ],
-          correct: 'c'
+          correct: 'b'
         },
         {
           id: 4,
-          text: 'What is your best friends name?',
+          text: '`div` defined within render method is an actual DOM div element',
           choices: [
             {
               id: 'a',
-              text: 'John'
+              text: 'True'
             },
             {
               id: 'b',
-              text: 'Paul'
+              text: 'False'
             },
             {
               id: 'c',
-              text: 'Jerry'
+              text: 'Never thought about it ..... give me a sec........... maybe?'
             }
           ],
-          correct: 'a'
+          correct: 'b'
         }
       ],
       score: 0,
@@ -99,10 +100,18 @@ class App extends Component {
   }
 
   render() {
+    if(this.state.current > this.state.questions.length){
+      var scorebox = '';
+      var results = <Results {...this.state} />
+    } else {
+      var scorebox = <Scorebox {...this.state} />
+      var results = '';
+    }
     return(
       <div>
-        <Scorebox {...this.state} />
+        {scorebox}
         <QuestionList {...this.state} setCurrent={this.setCurrent.bind(this)} setScore={this.setScore.bind(this)} />
+        {results}
       </div>
     )
   }
