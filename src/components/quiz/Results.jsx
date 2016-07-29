@@ -7,9 +7,9 @@ class Results extends Component {
     if(percent > 80){
       var message = 'Good job';
     } else if(percent < 80 && percent > 60){
-      var message = 'Meh, thats okay'
+      var message = 'Meh, thats okay';
     } else {
-      var message = 'You suck. I advise you to close the browser and never touch your laptop again'
+      var message = 'You suck. I advise you to close the browser and never touch your laptop again';
     }
     return(
       <div className="well">
